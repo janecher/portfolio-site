@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 // import NewBioForm from './NewBioForm';
 // import BioInfo from './BioInfo';
 import NewSkillForm from './NewSkillForm';
-import Skills from './Skills';
+//import Skills from './Skills';
 
 // import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
@@ -12,12 +12,12 @@ function UserControl() {
 
   // const [bioForm, setBioForm] = useState(false);
   // const [bio, setBio] = useState(null);
-  const [skills, setSkills] = useState([]);
+  //const [skills, setSkills] = useState([]);
 
-  const handleAddingSkill = (createdSKill) => {
-    setSkills([...skills, createdSKill]);
-    console.log(skills);
-  }
+  // const handleAddingSkill = (createdSKill) => {
+  //   setSkills([...skills, createdSKill]);
+  //   console.log(skills);
+  // }
 
   // const handleBioFormClick = () => {
   //   setBioForm(true);
@@ -51,8 +51,9 @@ function UserControl() {
 
   return(
     <React.Fragment>
-      <NewSkillForm onSkillCreation={handleAddingSkill}/>
-      <Skills skills={skills}/>
+      {/* onSkillCreation={handleAddingSkill} */}
+      <NewSkillForm />
+      {/* <Skills skills={skills}/> */}
     </React.Fragment>
   );
 }
