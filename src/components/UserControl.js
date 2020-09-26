@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 // import NewBioForm from './NewBioForm';
 // import BioInfo from './BioInfo';
 import NewSkillForm from './NewSkillForm';
-//import Skills from './Skills';
+import Skills from './Skills';
 
 // import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
@@ -53,7 +53,7 @@ function UserControl() {
     <React.Fragment>
       {/* onSkillCreation={handleAddingSkill} */}
       <NewSkillForm />
-      {/* <Skills skills={skills}/> */}
+      <Skills />
     </React.Fragment>
   );
 }

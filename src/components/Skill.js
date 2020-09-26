@@ -5,14 +5,14 @@ function Skill(props){
   return (
     <React.Fragment>
       <div>
-        <p>{props.skill.skill}</p>
+        <p>{props.skill}</p>
       </div>
     </React.Fragment>
   );
 }
 
 Skill.propTypes = {
-  skill: PropTypes.object
+  skill: PropTypes.string
 };
 
 export default Skill
