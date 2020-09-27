@@ -8,15 +8,8 @@ function NewSkillForm(props) {
 
   const firestore = useFirestore();
 
-  // function handleNewSKillFormSubmission(event) {
-  //   event.preventDefault();
-  //   props.onSkillCreation({skill: event.target.skill.value, id: v4()});
-  //   event.target.reset();
-  // }
-
   function addTicketToFirestore(event) {
     event.preventDefault();
-    //props.onSkillCreation();
     return firestore.collection('skills').add(
       {
         skill: event.target.skill.value,

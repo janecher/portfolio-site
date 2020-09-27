@@ -1,59 +1,27 @@
 import React, {useState} from 'react';
-// import NewBioForm from './NewBioForm';
-// import BioInfo from './BioInfo';
+import BioInfo from './BioInfo';
+import NewBioForm from './NewBioForm';
 import NewSkillForm from './NewSkillForm';
 import Skills from './Skills';
 
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-// import * as a from './../actions';
-
 function UserControl() {
 
-  // const [bioForm, setBioForm] = useState(false);
-  // const [bio, setBio] = useState(null);
-  //const [skills, setSkills] = useState([]);
+  const [bioForm, setBioForm] = useState(false);
+  const [bioAddBtn, setBioAddBtn] = useState(true);
 
-  // const handleAddingSkill = (createdSKill) => {
-  //   setSkills([...skills, createdSKill]);
-  //   console.log(skills);
-  // }
+  const handleBioFormClick = () => {
+    setBioForm(!bioForm);
+    setBioAddBtn(!bioAddBtn);
+  }
 
-  // const handleBioFormClick = () => {
-  //   setBioForm(true);
-  // }
-
-  // const handleAddingBio = (createdBio) => {
-  //   setBio(createdBio);
-  //   setBioForm(false);
-  //   console.log(createdBio);
-  // }
-
-  // const handleOnClickEditBio = () => {
-  //   setBioForm(true);
-  // }
-
-  // const handleDeleteBio = () => {
-  //   setBio(null);
-  // }
-
-  // let currentComponentToShow = null;
-  // if(bioForm) {
-  //   currentComponentToShow = <NewBioForm onBioCreation={handleAddingBio}/>;
-  // } else if (bio){
-  //   console.log(bio)
-  //   currentComponentToShow = <BioInfo bio={bio} onClickDelete = {handleDeleteBio} onClickEdit = {handleOnClickEditBio}/>
-  // } else {
-  //   currentComponentToShow = <button onClick={handleBioFormClick} className="btn btn-secondary btn-lg btn-block">Add/Change Bio</button>
-  // }
-
-  //let skillsShow = skills.length !== 0 ? <Skills skills={skills}/> : null
-
+  let bioFormShow = bioForm ? <NewBioForm onBioCreation = {handleBioFormClick}/> : null
+  
   return(
     <React.Fragment>
-      {/* onSkillCreation={handleAddingSkill} */}
       <NewSkillForm />
       <Skills />
+      {bioFormShow}
+      <BioInfo onClickAddBio={handleBioFormClick} addBtn={bioAddBtn}/> 
     </React.Fragment>
   );
 }
