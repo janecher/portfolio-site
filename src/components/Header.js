@@ -4,7 +4,7 @@ import React from "react";
 function Header(){
   return (
     <React.Fragment>
-      <h1> Help Queue</h1>
+      <h1>Portfolio Site</h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
