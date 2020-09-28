@@ -45,13 +45,39 @@ function UserControl(props) {
   } else {
     currentlyVisibleBioState = <button onClick={handleBioNewFormClick}>Add Bio</button> 
   }
-  return (
-    <React.Fragment>
-      <NewSkillForm />
-      <Skills />
-      {currentlyVisibleBioState}
-    </React.Fragment>
-  ); 
+
+  const auth = props.firebase.auth();
+  if (!isLoaded(auth)) {
+    return (
+      <React.Fragment>
+        <h1>Loading...</h1>
+      </React.Fragment>
+    )
+  }
+  if ((isLoaded(auth)) && (auth.currentUser == null)) {
+    return (
+      <React.Fragment>
+        <h1>You must be signed in to access the queue.</h1>
+      </React.Fragment>
+    )
+  } 
+  if ((isLoaded(auth)) && (auth.currentUser != null)) {
+    // All of the code previously in our render() method should go in this conditional.
+    return (
+      <React.Fragment>
+        <NewSkillForm />
+        <Skills />
+        {currentlyVisibleBioState}
+      </React.Fragment>
+    ); 
+  }
+  // return (
+  //   <React.Fragment>
+  //     <NewSkillForm />
+  //     <Skills />
+  //     {currentlyVisibleBioState}
+  //   </React.Fragment>
+  // ); 
 }
 
 export default withFirestore(UserControl);
