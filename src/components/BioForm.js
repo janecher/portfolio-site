@@ -8,7 +8,7 @@ function BioForm(props) {
           <div className="panel-body">
           <form onSubmit={props.bioFormSubmissionHandler}>
             <div className ="form-group">
-              <label>Add Bio</label>
+              <label>About you (Bio)</label>
               <textarea className="form-control" 
                 type='text'
                 name='bio'
