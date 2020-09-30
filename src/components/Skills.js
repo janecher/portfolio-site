@@ -24,20 +24,23 @@ function Skills(props){
   if (isLoaded(skills) && !isEmpty(skills)) {
     return (
       <React.Fragment>
-        <hr/>
-        <h3>Skills:</h3>
-        <ul>
-        {skills.map((skill) => {
-          return <li key={skill.id}>
-            <Skill
-            skill={skill.skill}
-            id={skill.id}
-            key={skill.id}
-            onClickDeleteSkill={handleDeleteSkill}
-            />
-          </li>
-        })}
-        </ul>
+        <div className="panel panel-success">
+          <div className="panel-body">
+            <h3>Skills:</h3>
+            <ul>
+            {skills.map((skill) => {
+              return <li key={skill.id}>
+                <Skill
+                skill={skill.skill}
+                id={skill.id}
+                key={skill.id}
+                onClickDeleteSkill={handleDeleteSkill}
+                />
+              </li>
+            })}
+            </ul>
+          </div>
+        </div>
       </React.Fragment>
     );
   // If the skills aren't loaded yet, our fragment will return a "Loading..." message.

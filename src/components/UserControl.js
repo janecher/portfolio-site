@@ -6,12 +6,15 @@ import NewSkillForm from './NewSkillForm';
 import Skills from './Skills';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
-import { withFirestore } from 'react-redux-firebase'
+import { withFirestore } from 'react-redux-firebase';
+import firebase from "firebase/app";
+import { Link } from "react-router-dom";
 
 function UserControl(props) {
 
   const [bioNewForm, setBioNewForm] = useState(false);
   const [bioEditForm, setBioEditForm] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(true);
 
   const handleBioNewFormClick = () => {
     setBioNewForm(!bioNewForm);
@@ -23,6 +26,14 @@ function UserControl(props) {
 
   const handleDeleteBio = (id) => {
     props.firestore.delete({collection: 'bio', doc: id});
+  }
+
+  const doSignOut = () => {
+    firebase.auth().signOut().then(function() {
+      setIsSignIn(false);
+    }).catch(function(error) {
+      console.log(error.message);
+    });
   }
 
   useFirestoreConnect([
@@ -43,7 +54,7 @@ function UserControl(props) {
                                 onClickDeleteBio={handleDeleteBio}
                                 />
   } else {
-    currentlyVisibleBioState = <button onClick={handleBioNewFormClick}>Add Bio</button> 
+    currentlyVisibleBioState = <button className="btn btn-info" onClick={handleBioNewFormClick}>Add Bio</button> 
   }
 
   const auth = props.firebase.auth();
@@ -57,27 +68,21 @@ function UserControl(props) {
   if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <React.Fragment>
-        <h1>You must be signed in to access your portfolio.</h1>
+        <p className="text-center"><span className="mr-5"><Link to="/signin"><button type="button" className="btn btn-primary mb-3">Sign In</button></Link></span><span><Link to="/signup"><button type="button" className="btn btn-primary mb-3">Sign Up</button></Link></span></p>
       </React.Fragment>
     )
   } 
-  if ((isLoaded(auth)) && (auth.currentUser != null)) {
-    // All of the code previously in our render() method should go in this conditional.
+  if ((isLoaded(auth)) && (auth.currentUser != null) && isSignIn) {
     return (
       <React.Fragment>
+        <button className="btn btn-primary mb-3" onClick={doSignOut}>Sign out</button>
         <NewSkillForm />
         <Skills />
-        {currentlyVisibleBioState}
+        <hr/>
+        {currentlyVisibleBioState}          
       </React.Fragment>
     ); 
-  }
-  // return (
-  //   <React.Fragment>
-  //     <NewSkillForm />
-  //     <Skills />
-  //     {currentlyVisibleBioState}
-  //   </React.Fragment>
-  // ); 
+  } 
 }
 
 export default withFirestore(UserControl);

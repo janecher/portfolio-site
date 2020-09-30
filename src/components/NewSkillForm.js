@@ -1,11 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-//import { v4 } from 'uuid';
 import { useFirestore } from 'react-redux-firebase'
 
-
-function NewSkillForm(props) {
-
+function NewSkillForm() {
   const firestore = useFirestore();
 
   function addTicketToFirestore(event) {
@@ -19,19 +15,23 @@ function NewSkillForm(props) {
 
   return (
     <React.Fragment>
-      <form onSubmit={addTicketToFirestore}>
-        <div>
-          <label>Add Skill</label>
-          <input type='text' name='skill' required/>
+      <div className="panel panel-info mb-5">
+          <div className="panel-body">
+          <form onSubmit={addTicketToFirestore}>
+            <div className ="form-group">
+              <label>Add Skill</label>
+              <input className="form-control" 
+                type='text'
+                name='skill'
+                required
+              />
+            </div>
+            <button type='submit' className="btn btn-info">Add skill</button>
+          </form>
         </div>
-        <button type='submit'>Add skill</button>
-      </form>
+      </div>
     </React.Fragment>
   );
 }
-
-NewSkillForm.propTypes = {
-  onSkillCreation: PropTypes.func
-};
 
 export default NewSkillForm;

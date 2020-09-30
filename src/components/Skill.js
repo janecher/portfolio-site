@@ -6,7 +6,7 @@ function Skill(props){
     <React.Fragment>
       <div>
         <p>{props.skill}
-          <button onClick={() => props.onClickDeleteSkill(props.id)}>X</button>
+          <button className="btn btn-info ml-3"onClick={() => props.onClickDeleteSkill(props.id)}>X</button>
         </p>
       </div>
     </React.Fragment>

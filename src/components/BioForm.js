@@ -15,7 +15,7 @@ function BioForm(props) {
                 required
               />
             </div>
-            <button type='submit' className="btn btn-success btn-lg">{props.buttonText}</button>
+            <button type='submit' className="btn btn-info">{props.buttonText}</button>
           </form>
         </div>
       </div>
