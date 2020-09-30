@@ -29,7 +29,7 @@ function SignIn(props){
               />
             </div>
             <div className ="form-group">
-              <label>Email:</label>
+              <label>Password:</label>
               <input className="form-control"
                 type='password'
                 name='signinPassword'

@@ -43,7 +43,6 @@ function Skills(props){
         </div>
       </React.Fragment>
     );
-  // If the skills aren't loaded yet, our fragment will return a "Loading..." message.
   } else {
     return (
       <p>No skills added</p>
